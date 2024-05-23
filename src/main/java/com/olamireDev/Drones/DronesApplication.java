@@ -1,13 +1,23 @@
 package com.olamireDev.Drones;
 
+import com.olamireDev.Drones.service.MedicationLoadingService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DronesApplication {
+public class DronesApplication implements CommandLineRunner {
+
+	@Autowired
+	MedicationLoadingService medicationLoadingService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(DronesApplication.class, args);
 	}
 
+	@Override
+	public void run(String... args) throws Exception {
+		medicationLoadingService.loadMedications();
+	}
 }

@@ -1,9 +1,6 @@
 package com.olamireDev.Drones.data.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -24,6 +21,7 @@ public class MedicationEntity {
 
     private String code; //(allowed only upper case letters, underscore and numbers);
 
+    @Column(columnDefinition = "TEXT")
     private String image; //(picture of the medication case).
 
 }

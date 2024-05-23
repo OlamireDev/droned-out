@@ -1,0 +1,22 @@
+{
+  "medications": [
+    {
+        "name": "Aspirin",
+        "weight": 1000,
+        "code":"AS_123",
+        "image":"aspirin.jpg"
+    },
+    {
+      "name": "Aspirin",
+      "weight": 1000,
+      "code":"AS_123",
+      "image":"aspirin.jpg"
+    },
+    {
+      "name": "Aspirin",
+      "weight": 1000,
+      "code":"AS_123",
+      "image":"aspirin.jpg"
+    }
+  ]
+}
