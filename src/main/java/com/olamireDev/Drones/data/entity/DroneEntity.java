@@ -1,15 +1,17 @@
 package com.olamireDev.Drones.data.entity;
 
 import com.olamireDev.Drones.data.discrete.DroneState;
-import com.olamireDev.Drones.data.discrete.ModelType;
+import com.olamireDev.Drones.data.discrete.DroneModelType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -19,14 +21,17 @@ import java.math.BigDecimal;
 public class DroneEntity {
 
     @Id
-    private String serialNumber; //(100 characters max);
+    private String serialNumber;
 
-    private ModelType model; //(Lightweight, Middleweight, Cruiserweight, Heavyweight)
+    private DroneModelType model;
 
-    private Double weightLimit; //(500gr max);
+    private BigDecimal weightLimit;
 
-    private BigDecimal batteryCapacity; // (percentage);
+    private BigDecimal batteryCapacity;
 
-    private DroneState state; //(IDLE, LOADING, LOADED, DELIVERING, DELIVERED, RETURNING).
+    private DroneState state;
+
+    @CreationTimestamp
+    private LocalDateTime registrationDate;
 
 }

@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 
 @Service
 @Slf4j
-public class MedicationLoadingService {
+public class MedicationService {
 
     @Autowired
     private MedicationRepository medicationRepo;
@@ -29,8 +29,26 @@ public class MedicationLoadingService {
             var medicationJsonString = medicationResource.getContentAsString(Charset.defaultCharset());
             var mapper = new ObjectMapper();
             var medicationsListDTO = mapper.readValue(medicationJsonString, MedicationListDTO.class);
-            List<MedicationEntity> medicationEntities = new ArrayList<>(medicationsListDTO.getMedications().stream()
-                    .filter(MedicationDTO::isValid).map(MedicationDTO::toEntity).toList());
+            List<MedicationEntity> medicationEntities = new ArrayList<>();
+            for (MedicationDTO medicationDTO : medicationsListDTO.getMedications()) {
+                if(!medicationDTO.isNameValid()){
+                    log.error("Invalid medication name: {}", medicationDTO.getName());
+                    continue;
+                }
+                if(!medicationDTO.isCodeValid()) {
+                    log.error("Invalid medication code: {}", medicationDTO.getCode());
+                    continue;
+                }
+                if(!medicationDTO.isWeightValid()) {
+                    log.error("Invalid medication weight: {}", medicationDTO.getWeight());
+                    continue;
+                }
+                if(!medicationDTO.isImageValid()) {
+                    log.error("Invalid medication image: {}", medicationDTO.getImage());
+                    continue;
+                }
+                medicationEntities.add(medicationDTO.toEntity());
+            }
             medicationEntities = medicationRepo.saveAll(medicationEntities);
             log.info("Loaded {} medications", medicationEntities.size());
             log.info("Medications: {}", medicationEntities.stream().map(medicationEntity -> medicationEntity.getId() + " : " +medicationEntity.getName())

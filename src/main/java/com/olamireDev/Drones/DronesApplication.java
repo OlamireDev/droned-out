@@ -1,6 +1,6 @@
 package com.olamireDev.Drones;
 
-import com.olamireDev.Drones.service.MedicationLoadingService;
+import com.olamireDev.Drones.service.MedicationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class DronesApplication implements CommandLineRunner {
 
 	@Autowired
-	MedicationLoadingService medicationLoadingService;
+	MedicationService medicationService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(DronesApplication.class, args);
@@ -18,6 +18,6 @@ public class DronesApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		medicationLoadingService.loadMedications();
+		medicationService.loadMedications();
 	}
 }

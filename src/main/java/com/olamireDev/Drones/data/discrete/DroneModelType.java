@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public enum ModelType {
+public enum DroneModelType {
 
     LW("Lightweight"),
     MW("Middleweight"),
