@@ -3,15 +3,15 @@ package com.olamireDev.Drones.data.dto.drone;
 
 import com.olamireDev.Drones.data.discrete.DroneState;
 import com.olamireDev.Drones.data.entity.DroneEntity;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.math.BigDecimal;
 
+@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@Data
 public class DroneResponseDTO extends BaseDroneDTO {
 
     private String model;
