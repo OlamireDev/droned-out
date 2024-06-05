@@ -69,5 +69,4 @@ public class DroneControllerValidationTest {
                 .andExpect(content().string("Serial number is not more than 100 characters"));
     }
 
-
 }
