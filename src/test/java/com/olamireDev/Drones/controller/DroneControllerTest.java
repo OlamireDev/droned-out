@@ -88,5 +88,4 @@ class DroneControllerTest {
         assertThrows(BadRequestException.class, () -> droneController.getDroneBatteryLevel("Sigma5"));
     }
 
-
 }
